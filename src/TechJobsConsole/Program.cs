@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace TechJobsConsole
 {
@@ -57,17 +58,18 @@ namespace TechJobsConsole
                     // What is their search term?
                     Console.WriteLine("\nSearch term: ");
                     string searchTerm = Console.ReadLine();
+                    string lowerSearchTerm = searchTerm.ToLower();
 
                     List<Dictionary<string, string>> searchResults;
 
                     // Fetch results
                     if (columnChoice.Equals("all"))
                     {
-                        searchResults = JobData.FindByValue(searchTerm);
+                        searchResults = JobData.FindByValue(lowerSearchTerm);
                     }
                     else
                     {
-                        searchResults = JobData.FindByColumnAndValue(columnChoice, searchTerm);
+                        searchResults = JobData.FindByColumnAndValue(columnChoice, lowerSearchTerm);
                         
                     }
                     PrintJobs(searchResults);
