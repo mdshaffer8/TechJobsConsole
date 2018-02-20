@@ -43,11 +43,13 @@ namespace TechJobsConsole
                     {
                         List<string> results = JobData.FindAll(columnChoice);
 
+                        results.Sort();
                         Console.WriteLine("\n*** All " + columnChoices[columnChoice] + " Values ***");
                         foreach (string item in results)
                         {
                             Console.WriteLine(item);
                         }
+                        
                     }
                 }
                 else // choice is "search"
